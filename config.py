@@ -156,25 +156,30 @@ screens = [
                         },
                     name_transform=lambda name: name.upper(),
                     ),
-                widget.Systray(),
 
                 #Group
-                widget.TextBox(text = "", fontsize=30, foreground="#3e5f95", background="", padding=-4),
+                widget.TextBox(text = "", fontsize=32, foreground="#d87802", background="", padding=-4),
+                widget.Pomodoro(background="#d87802", color_inactive="#ffffff", color_break="#ff0000"),
+                widget.Sep(background="#d87802", padding=7, foreground="#d87802"),
+
+                #Group
+                widget.TextBox(text = "", fontsize=32, foreground="#3e5f95", background="#d87802", padding=-4),
                 widget.TextBox(text="", background="#3e5f95", fontsize=18, padding=3),
                 widget.ThermalSensor(tag_sensor="Core 0", threshold=50, background="#3e5f95"),
                 widget.TextBox(text="", background="#3e5f95", fontsize=18, padding=4),
                 widget.Memory(background="#3e5f95"),
+                widget.Systray(background="#3e5f95"),
                 widget.Sep(background="#3e5f95", padding=7, foreground="#3e5f95"),
 
                 #Group
-                widget.TextBox(text = "", fontsize=30, foreground="#0d8760", background="#3e5f95", padding=-4),
+                widget.TextBox(text = "", fontsize=32, foreground="#0d8760", background="#3e5f95", padding=-4),
                 widget.TextBox(text="墳", background="#0d8760", fontsize=18, padding=3),
                 widget.Volume(background="#0d8760", padding=7, fontsize=14),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p", background="#0d8760"),
                 widget.Sep(background="#0d8760", padding=7, foreground="#0d8760"),
 
                 #group
-                widget.TextBox(text = "", fontsize=30, foreground="#b91f18", background="#0d8760", padding=-4),
+                widget.TextBox(text = "", fontsize=32, foreground="#b91f18", background="#0d8760", padding=-4),
                 widget.CurrentLayout(background="#b91f18"),
                 widget.Sep(background="#b91f18", padding=7, foreground="#b91f18"),
 
