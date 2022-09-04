@@ -83,8 +83,16 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.run_extension(extension.DmenuRun(background="#222222", selected_background="#95260e")), desc="Spawn a command using a prompt widget"),
+
+    # Control Volume
     Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%")),
     Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ +5%")),
+
+    # Brightnessctl
+    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +10%")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10%-")),
+
+    # scrot
     Key([mod], "s", lazy.spawn("scrot /home/axel/Images/screenshots/screenshot.png")),
     Key([mod, "shift"], "s", lazy.spawn("scrot -s /home/axel/Images/screenshots/screenshot.png")),
 ]
@@ -159,16 +167,16 @@ screens = [
 
                 #Group
                 widget.TextBox(text = "", fontsize=32, foreground="#d87802", background="", padding=-4),
-                widget.Pomodoro(background="#d87802", color_inactive="#ffffff", color_break="#ff0000"),
+                widget.Battery(background="#d87802", format="{char}{percent: 2.0%}", charge_char="", discharge_char="", full_char="", empty_char="", unkown_char="", update_interval=1),
+                widget.Systray(background="#d87802", padding=10),
                 widget.Sep(background="#d87802", padding=7, foreground="#d87802"),
 
                 #Group
                 widget.TextBox(text = "", fontsize=32, foreground="#3e5f95", background="#d87802", padding=-4),
                 widget.TextBox(text="", background="#3e5f95", fontsize=18, padding=3),
-                widget.ThermalSensor(tag_sensor="Core 0", threshold=50, background="#3e5f95"),
+                widget.ThermalSensor(threshold=70, background="#3e5f95"),
                 widget.TextBox(text="", background="#3e5f95", fontsize=18, padding=4),
                 widget.Memory(background="#3e5f95"),
-                widget.Systray(background="#3e5f95"),
                 widget.Sep(background="#3e5f95", padding=7, foreground="#3e5f95"),
 
                 #Group
@@ -241,7 +249,7 @@ wmname = "LG3D"
 cmd = [
         "feh --bg-fill /home/axel/.config/qtile/wallpaper.jpg &",
         "picom &",
-        "xrandr -s 1360x768 &"
+        "nm-applet &",
         ]
 
 for x in cmd:
